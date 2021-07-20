@@ -8,3 +8,7 @@
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 **/.history
+
+__pycache__
+
+connection_string.py

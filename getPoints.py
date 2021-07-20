@@ -11,6 +11,4 @@ def getPoints(calories, sugar, satFat, protein):
 
     options = soup.find_all('b')
 
-    return options[0].string.replace(' Points', '')
-
-print(getPoints(540, 8, 12, 20))
+    return int(options[0].string.replace(' Points', ''))
