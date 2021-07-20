@@ -1,22 +1,16 @@
 from nutritionfacts import get_database
-from getPoints import getPoints
+from getPoints import get_points_from_list
+from pymongo import MongoClient
+from meal import Meal
 
 db = get_database()
 
 # Access Collection
 RESTAURANT = "12TH AVE BREAD CO"
 
-collection_name = db[RESTAURANT]
+collection: MongoClient = db[RESTAURANT]
 
-items = collection_name.find()
-# loop through food items for that restautant collection
-for item in items:
-    # if that item has points stored, get value
-    points = item.get('points')
+meal: Meal = Meal(collection)
+items = collection.find()
 
-    # else query website for point total and store result in db
-    if not points:
-        points = getPoints(item['calories'], item['sugar'], item['saturatedFat'], item['protein'])
-        collection_name.update_one({"_id": item["_id"]}, {"$set": {"points": points}})
-
-    print(item['name'], points, "Points")
+print(items[0])
