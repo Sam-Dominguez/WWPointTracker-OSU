@@ -14,7 +14,7 @@ def get_database():
         print('Database Connected.')
     else:
         print('Database Connection Failed.')
-    # Create the database for our example (we will use the same database
+    # Create the database for our example (we will use the same database)
     return client['WWPointTracker-OSU']
 
 
